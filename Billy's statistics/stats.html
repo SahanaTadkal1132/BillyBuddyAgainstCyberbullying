@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberbullying Awareness and Statistics</title>
+    <style>
+        /* Set a full-page background image */
+        body {
+            font-family: Arial, sans-serif; /* Replace with an actual image URL */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        /* Semi-transparent container with centered content */
+        .container {
+            background-color: rgba(0, 0, 0, 0.7); /* Black with 70% opacity */
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #FFD700; /* Gold color for better contrast */
+            margin-bottom: 10px;
+        }
+
+        .intro-text {
+            color: #cccccc;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        input {
+            background-color: #333;
+            color: #fff;
+        }
+
+        button {
+            background-color: #FFD700;
+            color: #333;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ffcc00;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.2); /* White with 20% opacity */
+            font-size: 15px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+<h1>Billy Buddy</h1>
+        <h1>Cyberbullying Awareness in India</h1>
+        <p class="intro-text">
+            Cyberbullying is a critical issue in India, impacting many individuals. Learn more about its prevalence
+            in your area by entering your city or state below. Raising awareness helps build safer communities.
+        </p>
+        
+        <input type="text" id="locationInput" placeholder="Enter city or state">
+        <button onclick="fetchStatistics()">Search</button>
+        <div id="result">
+<h3>Results are here! </h3>
+</div>
+    </div>
+<script src="script.js"></script>
+</body>
+</html>
