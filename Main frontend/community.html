@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billy-Buddy Community</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .intro {
+            flex: 1;
+            padding: 20px;
+            background-color: #fff;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .join-btn {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .feature-item {
+            flex: 1;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 10px;
+            text-align: center;
+        }
+
+        .forums {
+            flex: 2;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+
+        .forum-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .forum-item button {
+            padding: 8px 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .sidebar {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .sidebar section {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo">
+            <img src="image.jpg" alt="Billy-Buddy Logo" width="100">
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Community</a></li>
+                <li><a href="#">Resources</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main class="main-content">
+        <section class="intro">
+            <h1>Welcome to Billy-Buddy's Anti-Cyberbullying Community</h1>
+            <p>Join our supportive community dedicated to stopping cyberbullying. Share your experiences, connect with others, and access resources.</p>
+            <button class="join-btn" onclick="alert('Welcome to the community!')">Join the Community</button>
+        </section>
+
+        <!-- Community Features -->
+        <section class="features">
+            <h2>Community Features</h2>
+            <div class="feature-item">
+                <img src="discusion.jpg" alt="Discussion" width="50">
+                <h3>Open Discussions</h3>
+                <p>Engage in open discussions about your experiences or find advice from others who have gone through similar challenges.</p>
+            </div>
+            <div class="feature-item">
+                <img src="support.jpg" alt="Support" width="50">
+                <h3>Peer Support</h3>
+                <p>Connect with mentors and peers for emotional and mental support.</p>
+            </div>
+            <div class="feature-item">
+                <img src="resources.jpg" alt="Resources" width="50">
+                <h3>Educational Resources</h3>
+                <p>Access tools and resources to educate yourself about cyberbullying and how to combat it effectively.</p>
+            </div>
+        </section>
+
+        <!-- Forums/Discussions -->
+        <section class="forums">
+            <h2>Popular Discussions</h2>
+            <div class="forum-list">
+                <article class="forum-item">
+                    <h3>How to Handle Cyberbullying in School</h3>
+                    <p>Join the conversation and share your thoughts on how students can stand up against cyberbullying in school.</p>
+                    <button>Join Discussion</button>
+                </article>
+                <article class="forum-item">
+                    <h3>Creating a Safe Online Space</h3>
+                    <p>Tips and strategies for creating and maintaining a safe and positive online environment.</p>
+                    <button>Join Discussion</button>
+                </article>
+                <article class="forum-item">
+                    <h3>Share Your Story</h3>
+                    <p>Feel free to share your experiences, and together we can fight cyberbullying.</p>
+                    <button>Join Discussion</button>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Sidebar Section -->
+    <aside class="sidebar">
+        <section class="popular-topics">
+            <h2>Popular Topics</h2>
+            <ul>
+                <li><a href="#">Mental Health & Bullying</a></li>
+                <li><a href="#">Online Safety</a></li>
+                <li><a href="#">Dealing with Harassment</a></li>
+                <li><a href="#">Building Confidence</a></li>
+            </ul>
+        </section>
+
+        <section class="recent-activity">
+            <h2>Recent Activity</h2>
+            <ul>
+                <li><strong>Jane</strong> commented on <em>Creating a Safe Online Space</em></li>
+                <li><strong>Mike</strong> started a discussion on <em>How to Talk to Parents About Cyberbullying</em></li>
+                <li><strong>Lisa</strong> shared her story in <em>Share Your Story</em></li>
+            </ul>
+        </section>
+    </aside>
+
+    <!-- Footer Section -->
+<footer class="footer">
+    <p>&copy; 2024 Billy-Buddy | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    <div class="social-icons">
+        <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+</footer>
+<script>
+    function redirectToLogin() {
+        window.location.href = 'login.html';
+    }
+</script>
+
+    <script>
+        // Simple JavaScript to handle community join action
+        document.querySelector('.join-btn').addEventListener('click', function() {
+            alert('Welcome to the Billy-Buddy community!');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!-- frontend/login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('login.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-weight: bold;
+            color: black;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+            width: 400px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #000000;
+            font-weight: 600;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .form-group input {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: black;
+            outline: none;
+            transition: 0.3s ease;
+        }
+
+        .form-group label {
+            position: absolute;
+            top: 0;
+            left: 10px;
+            pointer-events: none;
+            font-size: 16px;
+            color: rgba(0, 0, 0, 0.7);
+            transition: 0.3s ease;
+        }
+
+        .form-group input:focus ~ label,
+        .form-group input:not(:placeholder-shown) ~ label {
+            top: -20px;
+            left: 0;
+            font-size: 12px;
+            color: #ffcccb;
+        }
+
+        .form-group input:focus {
+            border-bottom: 2px solid #ffcccb;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(90deg, #ff7e5f, #feb47b);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background: linear-gradient(90deg, #feb47b, #ff7e5f);
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: black;
+            font-size: 24px;
+            margin: 0 15px;
+            transition: 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #ffcccb;
+        }
+
+        .forgot-password {
+            display: block;
+            margin-top: 20px;
+            color: rgba(0, 0, 0, 0.7);
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+
+        .forgot-password:hover {
+            color: #ffcccb;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login to Your Account</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <input type="email" id="email" name="email" required placeholder=" " autocomplete="off">
+                <label for="email">Email</label>
+            </div>
+
+            <div class="form-group">
+                <input type="password" id="password" name="password" required placeholder=" " autocomplete="off">
+                <label for="password">Password</label>
+            </div>
+
+            <button type="submit">Log In</button>
+
+            <a href="#" class="forgot-password">Forgot Password?</a>
+
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-google"></i></a>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('http://localhost:5000/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert('Login successful');
+                    window.location.href = 'chatbot.html'; // Redirects to chatbot page on successful login
+                } else {
+                    alert(data.message || 'Login failed');
+                }
+            } catch (error) {
+                alert('An error occurred. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>

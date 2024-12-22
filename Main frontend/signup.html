@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Body Styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('signup.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        /* Signup Container Styling */
+        .signup-container {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            width: 400px;
+            text-align: center;
+            color: #333333;
+            position: relative;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Heading Styling */
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333333;
+        }
+        
+        /* Form Group Styling */
+        .form-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        /* Input Styling */
+        .form-group input {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid #333333;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #333333;
+            outline: none;
+            transition: 0.3s ease;
+        }
+        
+        /* Label Styling */
+        .form-group label {
+            position: absolute;
+            top: 0;
+            left: 10px;
+            pointer-events: none;
+            font-size: 16px;
+            color: rgba(51, 51, 51, 0.7);
+            transition: 0.3s ease;
+        }
+        
+        /* Focus Effect on Input and Label */
+        .form-group input:focus ~ label,
+        .form-group input:not(:placeholder-shown) ~ label {
+            top: -20px;
+            left: 0;
+            font-size: 12px;
+            color: #ffcccb;
+        }
+        
+        .form-group input:focus {
+            border-bottom: 2px solid #ffcccb;
+        }
+        
+        /* Button Styling */
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #ff7e5f, #feb47b);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        
+        button:hover {
+            background: linear-gradient(90deg, #feb47b, #ff7e5f);
+        }
+        
+        /* Social Icons Styling */
+        .social-icons {
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            color: #333333;
+            font-size: 20px;
+            margin: 0 10px;
+            transition: 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: #ffcccb;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Create Your Account</h2>
+        <form id="signupForm">
+            <div class="form-group">
+                <input type="text" id="firstName" name="firstName" required placeholder=" " autocomplete="off">
+                <label for="firstName">First Name</label>
+            </div>
+            
+            <div class="form-group">
+                <input type="text" id="lastName" name="lastName" required placeholder=" " autocomplete="off">
+                <label for="lastName">Last Name</label>
+            </div>
+
+            <div class="form-group">
+                <input type="text" id="userName" name="userName" required placeholder=" " autocomplete="off">
+                <label for="userName">Username</label>
+            </div>
+
+            <div class="form-group">
+                <input type="email" id="email" name="email" required placeholder=" " autocomplete="off">
+                <label for="email">Email</label>
+            </div>
+
+            <div class="form-group">
+                <input type="password" id="password" name="password" required placeholder=" " autocomplete="off">
+                <label for="password">Password</label>
+            </div>
+
+            <div class="form-group">
+                <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" placeholder=" " autocomplete="off">
+                <label for="phone">Phone Number</label>
+            </div>
+
+            <button type="submit">Sign Up</button>
+        </form>
+
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-google"></i></a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const userName = document.getElementById('userName').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const phone = document.getElementById('phone').value;
+
+            try {
+                const response = await fetch('http://localhost:5000/api/auth/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ firstName, lastName, userName, email, password, phone })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert(data.message || "Signup successful!");
+                    window.location.href = 'login.html';
+                } else {
+                    alert(data.message || "Signup failed. Please check your details and try again.");
+                }
+            } catch (error) {
+                alert("An error occurred. Please try again later.");
+            }
+        });
+    </script>
+</body>
+</html>
